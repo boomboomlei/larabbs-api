@@ -31,16 +31,22 @@ Route::prefix('v1')
                 // 用户注册
                 Route::post('users', 'UsersController@store')
                     ->name('users.store');
-                // 用户注册
-                Route::post('users', 'UsersController@store')
-                    ->name('users.store');
+             
                 // 第三方登录
                 Route::post('socials/{social_type}/authorizations', 'AuthorizationsController@socialStore')
                     ->where('social_type', 'wechat')
                     ->name('socials.authorizations.store');
+
+                 
                 // 登录
                 Route::post('authorizations', 'AuthorizationsController@store')
                     ->name('api.authorizations.store');
+
+                    // 小程序登录
+                 Route::post('weapp/authorizations', 'AuthorizationsController@weappStore')
+                 ->name('weapp.authorizations.store');
+
+                 
                 // 刷新token
                 Route::put('authorizations/current', 'AuthorizationsController@update')
                     ->name('authorizations.update');
